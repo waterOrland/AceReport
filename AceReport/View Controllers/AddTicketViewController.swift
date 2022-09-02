@@ -23,7 +23,6 @@ class AddTicketViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        test()
         
         viewSetup()
     }
@@ -44,12 +43,29 @@ class AddTicketViewController: UITableViewController {
     }
     
     private func ticketHandler() {
-        guard !dailyTickets.isEmpty else { return }
+        guard dailyTickets.isEmpty else { return }
         
-        let alert = UIAlertController(title: nil, message: "Enter opening ticket", preferredStyle: .alert)
+        let alert = UIAlertController(title: nil, message: "Enter Ticket Number", preferredStyle: .alert)
+        alert.addTextField { field in
+            field.placeholder = "Opening Ticket"
+            field.keyboardType = .numberPad
+        }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { [self] _ in
+            guard let openingTicket = alert.textFields else { return }
+            
+            if let openingTicket = openingTicket[0].text, !openingTicket.isEmpty {
+               ticket = DailyTicket(ticketNumber: Int(openingTicket), createdAt: Date(), completedAt: nil, totalStayed: nil, totalCost: nil)
+                
+                dailyTickets.append(ticket!)
+            }
+        }))
+        
+        present(alert, animated: true)
     }
     
     @IBAction func monthlyButton(_ sender: UIBarButtonItem) {
+        test()
         print("monthlyButton pressed!")
     }
     
