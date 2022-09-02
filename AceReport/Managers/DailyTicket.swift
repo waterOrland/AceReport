@@ -15,10 +15,10 @@ struct DailyTicket {
     let ticketNumber: Int
     var isOpenTicket: Bool = false
     var isCloseTicket: Bool = false
-    let createdAt: Date?
-    let completedAt: Date?
-    let totalStayed: DateInterval?
-    let totalCost: Int?
+    let createdAt: Date? = Date()
+    let completedAt: Date? = nil
+    let totalStayed: DateInterval? = nil
+    let totalCost: Int? = nil
     var isDone: Bool = false
     
     func getTotalStayed() {}

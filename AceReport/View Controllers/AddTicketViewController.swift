@@ -47,7 +47,7 @@ class AddTicketViewController: UITableViewController {
     private func ticketHandler() {
         guard dailyTickets.isEmpty else {
             if let newTicket = dailyTickets.last?.ticketNumber {
-                ticket = DailyTicket(ticketNumber: newTicket + 1, createdAt: Date(), completedAt: nil, totalStayed: nil, totalCost: nil)
+                ticket = DailyTicket(ticketNumber: newTicket)
                 dailyTickets.append(ticket!)
             }
             
@@ -64,7 +64,7 @@ class AddTicketViewController: UITableViewController {
             guard let openingTicket = alert.textFields else { return }
             
             if let openingTicket = openingTicket[0].text, !openingTicket.isEmpty {
-                ticket = DailyTicket(ticketNumber: Int(openingTicket)!, createdAt: Date(), completedAt: nil, totalStayed: nil, totalCost: nil)
+                ticket = DailyTicket(ticketNumber: Int(openingTicket)!)
                 ticket?.isOpenTicket = true
                 dailyTickets.append(ticket!)
             }
