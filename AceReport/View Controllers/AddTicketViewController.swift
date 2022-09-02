@@ -46,7 +46,7 @@ class AddTicketViewController: UITableViewController {
     private func ticketHandler() {
         guard !dailyTickets.isEmpty else { return }
         
-        print("dailyTicket has contents")
+        let alert = UIAlertController(title: nil, message: "Enter opening ticket", preferredStyle: .alert)
     }
     
     @IBAction func monthlyButton(_ sender: UIBarButtonItem) {
@@ -54,7 +54,7 @@ class AddTicketViewController: UITableViewController {
     }
     
     private func test() {
-//        print(ticket)
+        print(ticket)
     }
 }
 

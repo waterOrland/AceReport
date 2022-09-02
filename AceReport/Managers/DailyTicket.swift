@@ -15,8 +15,8 @@ struct DailyTicket {
     let ticketNumber: Int?
     var isOpenTicket: Bool = false
     var isCloseTicket: Bool = false
-    let arrival: Date?
-    let departure: Date?
+    let createdAt: Date?
+    let completedAt: Date?
     let totalStayed: DateInterval?
     let totalCost: Int?
     var isDone: Bool = false
