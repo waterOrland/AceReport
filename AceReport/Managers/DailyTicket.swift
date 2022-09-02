@@ -12,7 +12,7 @@ struct DailyTicket {
         case isDaily
     }
     
-    let ticketNumber: Int?
+    let ticketNumber: Int
     var isOpenTicket: Bool = false
     var isCloseTicket: Bool = false
     let createdAt: Date?

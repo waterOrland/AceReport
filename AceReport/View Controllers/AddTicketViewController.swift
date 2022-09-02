@@ -37,13 +37,22 @@ class AddTicketViewController: UITableViewController {
         emptyLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
 
+    // MARK: -
+    
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         ticketHandler()
         print("addButton pressed!")
     }
     
     private func ticketHandler() {
-        guard dailyTickets.isEmpty else { return }
+        guard dailyTickets.isEmpty else {
+            if let newTicket = dailyTickets.last?.ticketNumber {
+                ticket = DailyTicket(ticketNumber: newTicket + 1, createdAt: Date(), completedAt: nil, totalStayed: nil, totalCost: nil)
+                dailyTickets.append(ticket!)
+            }
+            
+            return
+        }
         
         let alert = UIAlertController(title: nil, message: "Enter Ticket Number", preferredStyle: .alert)
         alert.addTextField { field in
@@ -55,8 +64,8 @@ class AddTicketViewController: UITableViewController {
             guard let openingTicket = alert.textFields else { return }
             
             if let openingTicket = openingTicket[0].text, !openingTicket.isEmpty {
-               ticket = DailyTicket(ticketNumber: Int(openingTicket), createdAt: Date(), completedAt: nil, totalStayed: nil, totalCost: nil)
-                
+                ticket = DailyTicket(ticketNumber: Int(openingTicket)!, createdAt: Date(), completedAt: nil, totalStayed: nil, totalCost: nil)
+                ticket?.isOpenTicket = true
                 dailyTickets.append(ticket!)
             }
         }))
@@ -66,7 +75,7 @@ class AddTicketViewController: UITableViewController {
     
     @IBAction func monthlyButton(_ sender: UIBarButtonItem) {
         test()
-        print("monthlyButton pressed!")
+        print(dailyTickets.count)
     }
     
     private func test() {
