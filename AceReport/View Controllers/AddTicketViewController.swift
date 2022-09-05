@@ -20,7 +20,7 @@ class AddTicketViewController: UITableViewController {
     }
     
     var dailyTickets: [DailyTicket] = []
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,16 +41,15 @@ class AddTicketViewController: UITableViewController {
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         ticketHandler()
-        print("addButton pressed!")
     }
     
     private func ticketHandler() {
         guard dailyTickets.isEmpty else {
             if let newTicket = dailyTickets.last?.ticketNumber {
-                ticket = DailyTicket(ticketNumber: newTicket)
+                ticket = DailyTicket(ticketNumber: newTicket + 1)
                 dailyTickets.append(ticket!)
             }
-            
+            tableView.reloadData()
             return
         }
         
@@ -68,18 +67,43 @@ class AddTicketViewController: UITableViewController {
                 ticket?.isOpenTicket = true
                 dailyTickets.append(ticket!)
             }
+            tableView.reloadData()
         }))
-        
         present(alert, animated: true)
     }
     
     @IBAction func monthlyButton(_ sender: UIBarButtonItem) {
         test()
-        print(dailyTickets.count)
+        tableView.reloadData()
     }
     
+    // MARK: - TableView
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dailyTickets.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TicketTableViewCell.reusableIdentifer, for: indexPath) as? TicketTableViewCell else {
+            fatalError("Unexpected Index Path")
+        }
+        
+        cell.ticketLabel.text = String(dailyTickets[indexPath.row].ticketNumber)
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath)
+    }
+    
+    // MARK: - TEST
+    
     private func test() {
-        print(ticket)
+        print("Ticket Count: \(dailyTickets.count)")
+        print("dailtyTicket: \(dailyTickets)")
     }
 }
+
+
 
