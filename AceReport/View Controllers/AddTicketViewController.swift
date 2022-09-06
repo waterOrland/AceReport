@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  AceReport
 //
-//  Created by Orland Tompkins on 8/16/22.
+//  Created by Orland Tompkins.
 //
 
 import UIKit
@@ -10,8 +10,17 @@ import UIKit
 class AddTicketViewController: UITableViewController {
     let emptyLabel: UILabel = {
         let label = UILabel()
-        
         return label
+    }()
+    private lazy var timeDateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter
+    }()
+    private lazy var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd YYYY"
+        return dateFormatter
     }()
     var ticket: DailyTicket? {
         willSet {
@@ -29,6 +38,7 @@ class AddTicketViewController: UITableViewController {
     
     private func viewSetup() {
         view.addSubview(emptyLabel)
+        
         emptyLabel.text = "LIST EMPTY"
         emptyLabel.textColor = .lightGray
         emptyLabel.font = .italicSystemFont(ofSize: 16)
@@ -87,9 +97,8 @@ class AddTicketViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TicketTableViewCell.reusableIdentifer, for: indexPath) as? TicketTableViewCell else {
             fatalError("Unexpected Index Path")
         }
-        
         cell.ticketLabel.text = String(dailyTickets[indexPath.row].ticketNumber)
-        
+        cell.arrival.text = timeDateFormatter.string(from: dailyTickets[indexPath.row].createdAt)
         return cell
     }
     

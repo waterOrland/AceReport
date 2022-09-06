@@ -10,17 +10,17 @@ import Foundation
 struct DailyTicket {
     enum TicketType {
         case isDaily
+        case isComplete
     }
     
     let ticketNumber: Int
     var isOpenTicket: Bool = false
     var isCloseTicket: Bool = false
-    let createdAt: Date? = Date()
-    let completedAt: Date? = nil
-    let totalStayed: DateInterval? = nil
-    let totalCost: Int? = nil
-    var isDone: Bool = false
+    let createdAt: Date = Date()
+    let totalCost: Double? = nil
+    lazy var completedAt: Date? = nil
     
-    func getTotalStayed() {}
-    func getTotalCost() {}
+    func elapsedTime() -> TimeInterval {
+        return Date().timeIntervalSince(createdAt)
+    }
 }
