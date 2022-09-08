@@ -8,6 +8,10 @@
 import UIKit
 
 class AddTicketViewController: UITableViewController {
+    private enum Segue {
+        static let TicketCellViewController = "TicketCellViewController"
+    }
+    
     let emptyLabel: UILabel = {
         let label = UILabel()
         return label
@@ -84,7 +88,22 @@ class AddTicketViewController: UITableViewController {
     
     @IBAction func monthlyButton(_ sender: UIBarButtonItem) {
         test()
-        tableView.reloadData()
+    }
+    
+    // MARK: - Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else { return }
+        
+        switch (identifier) {
+            case Segue.TicketCellViewController:
+                guard let destination = segue.destination as? TicketCellViewController else { return }
+                guard let indexPath = tableView.indexPathForSelectedRow else { return }
+                
+                destination.ticket = dailyTickets[indexPath.row]
+            default:
+                break
+        }
     }
     
     // MARK: - TableView
@@ -103,14 +122,13 @@ class AddTicketViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
+        
     }
     
     // MARK: - TEST
     
     private func test() {
-        print("Ticket Count: \(dailyTickets.count)")
-        print("dailtyTicket: \(dailyTickets)")
+        
     }
 }
 

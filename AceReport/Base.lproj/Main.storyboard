@@ -113,7 +113,7 @@
                                 <connections>
                                     <outlet property="arrival" destination="Xnb-xJ-Zd7" id="6Au-xh-eNW"/>
                                     <outlet property="ticketLabel" destination="R5j-Wg-XN5" id="dSC-Ga-P7R"/>
-                                    <segue destination="N9a-AK-Axk" kind="presentation" id="fZ4-U1-qHu"/>
+                                    <segue destination="N9a-AK-Axk" kind="presentation" identifier="TicketCellViewController" id="fZ4-U1-qHu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

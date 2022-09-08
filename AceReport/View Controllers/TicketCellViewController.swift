@@ -8,9 +8,10 @@
 import UIKit
 
 class TicketCellViewController: UIViewController {
+    var ticket: DailyTicket?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
     }
 }
