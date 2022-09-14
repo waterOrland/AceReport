@@ -16,16 +16,6 @@ class AddTicketViewController: UITableViewController {
         let label = UILabel()
         return label
     }()
-    private lazy var timeDateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        return dateFormatter
-    }()
-    private lazy var dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd YYYY"
-        return dateFormatter
-    }()
     var ticket: DailyTicket? {
         willSet {
             emptyLabel.isHidden = true
@@ -98,9 +88,9 @@ class AddTicketViewController: UITableViewController {
         switch (identifier) {
             case Segue.TicketCellViewController:
                 guard let destination = segue.destination as? TicketCellViewController else { return }
-                guard let indexPath = tableView.indexPathForSelectedRow else { return }
+                guard let index = tableView.indexPathForSelectedRow?.row else { return }
                 
-                destination.ticket = dailyTickets[indexPath.row]
+                destination.ticket = dailyTickets[index]
             default:
                 break
         }
@@ -117,7 +107,7 @@ class AddTicketViewController: UITableViewController {
             fatalError("Unexpected Index Path")
         }
         cell.ticketLabel.text = String(dailyTickets[indexPath.row].ticketNumber)
-        cell.arrival.text = timeDateFormatter.string(from: dailyTickets[indexPath.row].createdAt)
+        cell.arrival.text = dailyTickets[indexPath.row].getArrival()
         return cell
     }
     
@@ -128,7 +118,7 @@ class AddTicketViewController: UITableViewController {
     // MARK: - TEST
     
     private func test() {
-        
+        print(dailyTickets[0].completedAt)
     }
 }
 
