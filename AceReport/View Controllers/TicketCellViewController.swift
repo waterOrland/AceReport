@@ -4,6 +4,7 @@
 //
 //  Created by Orland Tompkins on 8/16/22.
 //
+// TODO: - Implement protocol to pass value to prev VC -- createdAt
 
 import UIKit
 
@@ -14,6 +15,7 @@ class TicketCellViewController: UIViewController {
     @IBOutlet var durationLabel: UILabel!
     @IBOutlet var costLabel: UILabel!
     
+    var delegate: RetrieveDataDelegate?
     var ticket: DailyTicket?
     
     override func viewDidLoad() {
@@ -31,7 +33,7 @@ class TicketCellViewController: UIViewController {
         durationLabel.text = ticket?.elapsedTime
     }
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
-        ticket?.completedAt = Date()
-        print(ticket?.completedAt)
+        delegate?.completionDate = Date()
+        print(delegate?.completionDate)
     }
 }

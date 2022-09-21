@@ -7,6 +7,17 @@
 
 import UIKit
 
+protocol RetrieveDataDelegate {
+    var completionDate: Date { get }
+    var cost: Double { get }
+}
+
+extension RetrieveDataDelegate {
+    func setDate() {
+        
+    }
+}
+
 class AddTicketViewController: UITableViewController {
     private enum Segue {
         static let TicketCellViewController = "TicketCellViewController"
@@ -23,7 +34,9 @@ class AddTicketViewController: UITableViewController {
     }
     
     var dailyTickets: [DailyTicket] = []
-        
+
+    // MARK: - viewDidLoad()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -118,9 +131,6 @@ class AddTicketViewController: UITableViewController {
     // MARK: - TEST
     
     private func test() {
-        print(dailyTickets[0].completedAt)
+        print(dailyTickets[0].completedAt as Any)
     }
 }
-
-
-

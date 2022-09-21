@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5741EDE428C638AE000FEB81 /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5741EDE328C638AE000FEB81 /* TicketTableViewCell.swift */; };
+		5741EDE628DB5D5A000FEB81 /* ShiftReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5741EDE528DB5D5A000FEB81 /* ShiftReport.swift */; };
 		5745F22B28C2424C00D59210 /* Monthly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5745F22A28C2424C00D59210 /* Monthly.swift */; };
 		5745F22D28C242B900D59210 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5745F22C28C242B900D59210 /* Report.swift */; };
 		575E5DB728ABD08F00002638 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575E5DB628ABD08F00002638 /* AppDelegate.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		5741EDE328C638AE000FEB81 /* TicketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
+		5741EDE528DB5D5A000FEB81 /* ShiftReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftReport.swift; sourceTree = "<group>"; };
 		5745F22A28C2424C00D59210 /* Monthly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monthly.swift; sourceTree = "<group>"; };
 		5745F22C28C242B900D59210 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		575E5DB328ABD08F00002638 /* AceReport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AceReport.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +114,7 @@
 				57EFFD5128ABDE4E008679AE /* DailyTicket.swift */,
 				5745F22A28C2424C00D59210 /* Monthly.swift */,
 				5745F22C28C242B900D59210 /* Report.swift */,
+				5741EDE528DB5D5A000FEB81 /* ShiftReport.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 			files = (
 				575E5DBB28ABD08F00002638 /* AddTicketViewController.swift in Sources */,
 				575E5DB728ABD08F00002638 /* AppDelegate.swift in Sources */,
+				5741EDE628DB5D5A000FEB81 /* ShiftReport.swift in Sources */,
 				575E5DB928ABD08F00002638 /* SceneDelegate.swift in Sources */,
 				5745F22D28C242B900D59210 /* Report.swift in Sources */,
 				575E5DD428ABD23500002638 /* TicketCellViewController.swift in Sources */,
