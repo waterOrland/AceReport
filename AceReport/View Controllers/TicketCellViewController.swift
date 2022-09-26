@@ -33,7 +33,11 @@ class TicketCellViewController: UIViewController {
         durationLabel.text = ticket?.elapsedTime
     }
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
-        delegate?.completionDate = Date()
-        print(delegate?.completionDate)
+        delegate?.getDateCompleted(date: Date())
+        navigationController?.popViewController(animated: true) // return to prev VC
     }
+}
+
+extension RetrieveDataDelegate {
+    
 }

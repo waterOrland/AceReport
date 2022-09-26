@@ -8,14 +8,7 @@
 import UIKit
 
 protocol RetrieveDataDelegate {
-    var completionDate: Date { get }
-    var cost: Double { get }
-}
-
-extension RetrieveDataDelegate {
-    func setDate() {
-        
-    }
+    func getDateCompleted(date: Date)
 }
 
 class AddTicketViewController: UITableViewController {
@@ -33,6 +26,7 @@ class AddTicketViewController: UITableViewController {
         }
     }
     
+    var selectedRow: Int?
     var dailyTickets: [DailyTicket] = []
 
     // MARK: - viewDidLoad()
@@ -102,7 +96,8 @@ class AddTicketViewController: UITableViewController {
             case Segue.TicketCellViewController:
                 guard let destination = segue.destination as? TicketCellViewController else { return }
                 guard let index = tableView.indexPathForSelectedRow?.row else { return }
-                
+                selectedRow = index
+                destination.delegate = self
                 destination.ticket = dailyTickets[index]
             default:
                 break
@@ -131,6 +126,14 @@ class AddTicketViewController: UITableViewController {
     // MARK: - TEST
     
     private func test() {
-        print(dailyTickets[0].completedAt as Any)
+        
+    }
+}
+
+extension AddTicketViewController: RetrieveDataDelegate {
+    func getDateCompleted(date: Date) {
+        if let index = selectedRow {
+            dailyTickets[index].completedAt = date
+        }
     }
 }
